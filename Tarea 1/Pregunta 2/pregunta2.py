@@ -84,11 +84,11 @@ def left_rotate(x, n):
 import math
 
 # Inspirado en wikipedia md5 versión ingles y paper de md5 original
-def custom_md5(msg: str, h0: int = 0x67452301) -> str:
-    A = h0 % (pow(2, 32))
-    B = 0xEFCDAB89
-    C = 0x98BADCFE
-    D = 0x10325476
+def custom_md5(msg: str, h0: int = 137269462086865085541390238039692956790) -> str:
+    A = h0 // pow(2, 32*3)
+    B = (h0 // pow(2, 32*2)) % pow(2,32)
+    C = (h0 // pow(2, 32)) % pow(2,32)
+    D = h0 % pow(2, 32)
 
     binary_msg = transform_to_raw_binary(msg)
     # Añadimos el padding
